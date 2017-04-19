@@ -41,7 +41,7 @@ public class CatchController : MonoBehaviour {
         }
         if(counterActive) {
             timer();
-            moveUIWithObject(image.gameObject, 70, 130);
+            moveUIWithObject(image.gameObject, 50, 100);
             string displayTime = "0:" + Mathf.Round(timeleft);
             if(Mathf.Round(timeleft) < 10) {
                 displayTime = "0:0" + Mathf.Round(timeleft);

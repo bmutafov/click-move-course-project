@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "click-move-grid-fix", "click-move-grid-fix.csproj", "{A7F48FF4-17B1-364D-E0A3-F32687E3E23A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "click-move-grid-fix.Editor", "click-move-grid-fix.Editor.csproj", "{5CECF978-FAD9-B860-BA9B-B1EC0BE43A18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{A7F48FF4-17B1-364D-E0A3-F32687E3E23A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7F48FF4-17B1-364D-E0A3-F32687E3E23A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7F48FF4-17B1-364D-E0A3-F32687E3E23A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CECF978-FAD9-B860-BA9B-B1EC0BE43A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CECF978-FAD9-B860-BA9B-B1EC0BE43A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CECF978-FAD9-B860-BA9B-B1EC0BE43A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CECF978-FAD9-B860-BA9B-B1EC0BE43A18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
