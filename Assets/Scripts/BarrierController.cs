@@ -85,10 +85,14 @@ public class BarrierController : MonoBehaviour {
 		//gets cursor position
 		Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
 		RaycastHit hit;
+		float newZPos;
 		Physics.Raycast (ray, out hit, 100);
 
 		//calculating new Z position
-		float newZPos = Mathf.Round (hit.point.z) - addVal;
+		if(transform.position.z > Mathf.Round(hit.point.z)) {
+				newZPos = Mathf.Round (hit.point.z) + addVal;	
+		}else
+				newZPos = Mathf.Round (hit.point.z) - addVal;
 
 		/* newZpos >= 0 -> dont go out of the grid (bottom side)!
 		 * newZpos < gridSizeZ - 0.5f -addVal -> dont go out of the grid (top side) !
