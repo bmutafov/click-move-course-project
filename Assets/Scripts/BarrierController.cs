@@ -15,7 +15,6 @@ public class BarrierController : MonoBehaviour {
 	[Header("Tweak values")]
 	public Transform GridSize;
 	public float speed = 5;
-    public Transform[] players;
 
 
 	/*
