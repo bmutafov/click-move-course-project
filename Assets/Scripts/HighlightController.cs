@@ -77,7 +77,7 @@ public class HighlightController : MonoBehaviour {
                 string currentGrid = "" + z + x;
 
                 //if it is the grid cube with the catch
-                if (z == gridSizeZ - 1 && CatchSpawnController.catchCubeName == currentGrid) deselect(currentGrid, DeselectType.CatchSpawn);
+                if (z == gridSizeZ - 1 && CatchSpawn.catchCubeName == currentGrid) deselect(currentGrid, DeselectType.CatchSpawn);
 
                 //if any other catch cube with no catch on it
                 else if (z == gridSizeZ - 1) deselect(currentGrid, DeselectType.CatchGrid);
@@ -135,7 +135,7 @@ public class HighlightController : MonoBehaviour {
 	//Checks if theres an object above the given
 	//returns true if no
 	//returns false if yes
-	public bool checkIfFree(GameObject nextCube) {
+	static public bool isFree(GameObject nextCube) {
 		RaycastHit hit;
         if (Physics.Raycast(nextCube.transform.position, Vector3.up, out hit)) {
             //if theres object different than catch, the space is taken
@@ -151,7 +151,7 @@ public class HighlightController : MonoBehaviour {
     //Returns false if not ( occupied )
     bool onCube(GameObject cube, bool allow) {
         if (cube != null) {
-            if (checkIfFree(cube) && allow) {
+            if (isFree(cube) && allow) {
                 highlightCube(cube);
                 return true;
             }
@@ -166,7 +166,7 @@ public class HighlightController : MonoBehaviour {
         bool available = false;
         //Ignore CatchCubesMoveController.activePlayer.name.Contains("Target")
         //Doesnt ignore CatchCubeSelected
-        if (cube.name == CatchSpawnController.catchCubeName && MoveController.activePlayer.name.Contains("Target")) {
+        if (cube.name == CatchSpawn.catchCubeName && MoveController.activePlayer.name.Contains("Target")) {
             available = true;
         }
         else if (cube.tag != "CatchCube" && cube.tag != "CatchCubeSelected") {

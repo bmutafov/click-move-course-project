@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class CatchController : MonoBehaviour {
+public class Catch : MonoBehaviour {
 
     public float timeleft = 10;
     public GameObject timeLeftPrefab;
@@ -14,6 +11,7 @@ public class CatchController : MonoBehaviour {
     private Text remainingTimeText;
     private bool collided = false;
     private bool counterActive = false;
+
 	// Use this for initialization
 	void Start () {
         /*Instantiating a image with timeleft
@@ -37,7 +35,7 @@ public class CatchController : MonoBehaviour {
 	void Update () {
         if (collided) {
             destroyObjectIfOnFinish();
-            CatchSpawnController.catchCubeName = null;
+            CatchSpawn.catchCubeName = null;
         }
         if(counterActive) {
             timer();
@@ -96,7 +94,7 @@ public class CatchController : MonoBehaviour {
             /* get a reference to the last cube with the catch
              * make it a normal catch cube if the catch is cought
              * */
-            GameObject makeNormalCube = GameObject.Find(CatchSpawnController.catchCubeName);
+            GameObject makeNormalCube = GameObject.Find(CatchSpawn.catchCubeName);
             makeNormalCube.transform.tag = "CatchCube";
 
             /*

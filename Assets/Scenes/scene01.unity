@@ -186,7 +186,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4157066594062722, guid: 487bc20fd04cc4740b60d7897300975c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4157066594062722, guid: 487bc20fd04cc4740b60d7897300975c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1362,7 +1362,7 @@ Prefab:
       objectReference: {fileID: 1399130486}
     - target: {fileID: 1661574044854848, guid: 0ea4bfbab2e530643a71880a0760e852, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ea4bfbab2e530643a71880a0760e852, type: 2}
@@ -4195,6 +4195,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1.9499999
       objectReference: {fileID: 0}
+    - target: {fileID: 1106835232675212, guid: 487bc20fd04cc4740b60d7897300975c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 487bc20fd04cc4740b60d7897300975c, type: 2}
   m_IsPrefabParent: 0
@@ -6152,7 +6156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1798711256
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6580,6 +6584,7 @@ GameObject:
   - component: {fileID: 1942123077}
   - component: {fileID: 1942123079}
   - component: {fileID: 1942123080}
+  - component: {fileID: 1942123081}
   m_Layer: 0
   m_Name: GridSystem
   m_TagString: Untagged
@@ -6680,6 +6685,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93c3a5c7f3985d439842b01cd21603e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1942123081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1942123076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf75b0cd9d87c7e438f1db7b99d5edf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSizeX: 7
+  gridSizeZ: 4
 --- !u!4 &1946545329 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4665380054578146, guid: b040ac3083d311841b3c663f6ca806c9,
@@ -7236,6 +7254,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1.9499999
       objectReference: {fileID: 0}
+    - target: {fileID: 1106835232675212, guid: 487bc20fd04cc4740b60d7897300975c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 487bc20fd04cc4740b60d7897300975c, type: 2}
   m_IsPrefabParent: 0
@@ -7499,16 +7521,6 @@ Prefab:
       propertyPath: GridSize
       value: 
       objectReference: {fileID: 1942123078}
-    - target: {fileID: 114146301447557584, guid: 0ea4bfbab2e530643a71880a0760e852,
-        type: 2}
-      propertyPath: players.Array.data[0]
-      value: 
-      objectReference: {fileID: 2023298868}
-    - target: {fileID: 114146301447557584, guid: 0ea4bfbab2e530643a71880a0760e852,
-        type: 2}
-      propertyPath: players.Array.data[1]
-      value: 
-      objectReference: {fileID: 1399130486}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ea4bfbab2e530643a71880a0760e852, type: 2}
   m_IsPrefabParent: 0

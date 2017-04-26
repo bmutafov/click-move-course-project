@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 65125299823858340}
   - component: {fileID: 23024295275175734}
   - component: {fileID: 114146301447557584}
+  - component: {fileID: 114463780993682160}
   m_Layer: 0
   m_Name: VerticalBarrier
   m_TagString: Barrier
@@ -38,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1661574044854848}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.6, z: 2.5}
-  m_LocalScale: {x: 0.95, y: 0.5, z: 1.9499999}
+  m_LocalScale: {x: 0.99, y: 0.5, z: 1.99}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,13 +100,28 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1661574044854848}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55b61f99bbe99f740b163140c39b0dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GridSize: {fileID: 0}
   speed: 10
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
+  gridSizeZ: 0
+  newPosition: {x: 0, y: 0, z: 0}
+  addVal: 0
+  allowUpMovement: 1
+  allowDownMovement: 1
+--- !u!114 &114463780993682160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1661574044854848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4732f1aa531394d9bf83abf252f030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: 0
+  speed: 10

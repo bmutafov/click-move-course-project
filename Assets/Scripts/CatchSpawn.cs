@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CatchSpawnController : MonoBehaviour {
+public class CatchSpawn : MonoBehaviour {
 
     public GameObject catchObject;
     public Material spawnCubeMaterial;
