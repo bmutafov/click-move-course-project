@@ -22,7 +22,7 @@ public class CatchSpawn : MonoBehaviour {
      * 
      * */
    void spawn() {
-        float randomX = Random.Range(0, 7);
+        float randomX = Random.Range(Grid.start.x, Grid.size.x);
         
 
         //finding random player

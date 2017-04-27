@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour {
     public Transform gameOverPanel;
     public Transform howToPlayPanel;
+    public Transform pausePanel;
+
+    public Timer[] timers;
 
     static public Transform staticGameOverPanel;
 
@@ -23,6 +24,16 @@ public class GameManager : MonoBehaviour {
 
     public void restartGame() {
         SceneManager.LoadScene("scene01");
+    }
+
+    public void pauseGame() {
+        pausePanel.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void resumeGame() {
+        pausePanel.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void hideHowToPlay() {

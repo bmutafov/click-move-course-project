@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23612320759331460}
   - component: {fileID: 54543366265060962}
   - component: {fileID: 114207996047707242}
+  - component: {fileID: 114807104030755270}
   m_Layer: 0
   m_Name: Catch
   m_TagString: Catch
@@ -108,9 +109,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a8c81d0075e464faa380b556ba38fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeleft: 5
+  timeToCatch: 12
   timeLeftPrefab: {fileID: 1986802724395308, guid: ee4832162f3a80b43b87a1a7f5f5f27c,
     type: 2}
+--- !u!114 &114807104030755270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525807980197126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800ff01839408f9439d55ac495bb9bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135369432484807324
 SphereCollider:
   m_ObjectHideFlags: 1

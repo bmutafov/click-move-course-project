@@ -3,34 +3,40 @@
 public class Timer : MonoBehaviour {
 
     private float timeleft = 0;
-    private bool start = false;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private bool isStarted = false;
+    private bool isPaused = false;
 	
 	// Update is called once per frame
-	void Update () {
-        if (start) runTimer();
+	void Update () {    
+        if (isStarted && !isPaused) runTimer();
 	}
 
-    bool runTimer() {
+    private bool runTimer() {
         if (timeleft > 0) {
             timeleft -= Time.deltaTime;
             return true;
         }
-        start = false;
+        isStarted = false;
         return false;
     }
 
     public void startTimer(float timeleft) {
-        if (!start) {
+        if (!isStarted) {
             this.timeleft = timeleft;
-            start = true;
+            isStarted = true;
         }
     }
 
-   public  float TimeRemaining() {
+    public  float TimeRemaining() {
         return timeleft;
+    }
+
+    public void resetTimer() {
+        timeleft = 0;
+        isStarted = false;
+    }
+
+    public void pauseTimer(bool state) {
+        isPaused = state;
     }
 }
