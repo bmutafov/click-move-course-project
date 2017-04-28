@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33328708506324260}
   - component: {fileID: 65125299823858340}
   - component: {fileID: 23024295275175734}
-  - component: {fileID: 114146301447557584}
   - component: {fileID: 114463780993682160}
   m_Layer: 0
   m_Name: VerticalBarrier
@@ -94,24 +93,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114146301447557584
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1661574044854848}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55b61f99bbe99f740b163140c39b0dfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GridSize: {fileID: 0}
-  speed: 10
-  gridSizeZ: 0
-  newPosition: {x: 0, y: 0, z: 0}
-  addVal: 0
-  allowUpMovement: 1
-  allowDownMovement: 1
 --- !u!114 &114463780993682160
 MonoBehaviour:
   m_ObjectHideFlags: 1

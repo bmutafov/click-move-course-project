@@ -2,11 +2,10 @@
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+
     public Transform gameOverPanel;
     public Transform howToPlayPanel;
     public Transform pausePanel;
-
-    public Timer[] timers;
 
     static public Transform staticGameOverPanel;
 
@@ -36,8 +35,19 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
     }
 
+    public void quitGame() {
+        Application.Quit();
+    }
+
     public void hideHowToPlay() {
         howToPlayPanel.gameObject.SetActive(false);
+    }
+
+    void Update() {
+        //pausing game when clicking back button
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            pauseGame();
+        }
     }
 
 }

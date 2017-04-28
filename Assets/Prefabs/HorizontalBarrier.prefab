@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33848909034576436}
   - component: {fileID: 65604139933782662}
   - component: {fileID: 23079452530928734}
-  - component: {fileID: 114832218872326958}
   - component: {fileID: 114520496547499086}
   m_Layer: 0
   m_Name: HorizontalBarrier
@@ -107,21 +106,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: 1
   speed: 10
---- !u!114 &114832218872326958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1106835232675212}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15437320c89cf0440bce96caeda36005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GridSize: {fileID: 0}
-  speed: 10
-  gridSizeX: 0
-  newPosition: {x: 0, y: 0, z: 0}
-  addVal: 0
-  allowRightMovement: 1
-  allowLeftMovement: 1

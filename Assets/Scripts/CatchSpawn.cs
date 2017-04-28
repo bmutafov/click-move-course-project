@@ -22,12 +22,13 @@ public class CatchSpawn : MonoBehaviour {
      * 
      * */
    void spawn() {
-        float randomX = Random.Range(Grid.start.x, Grid.size.x);
-        
-
+        //roundomizing x position for catch object
+        int randomX = Mathf.RoundToInt(Random.Range(Grid.start.x, (Grid.size.x - 1)));
+  
         //finding random player
+        //TODO change range
         GameObject player = GameObject.Find("Player" + Random.Range(1, 3));
-        player.GetComponent<Renderer>().material = cubeTargetMat;
+        Materials.set(player, cubeTargetMat.name);
         player.name = player.name + "Target";
         ParticleSystem ps = player.GetComponentInChildren<ParticleSystem>();
         if (!ps.isPlaying) {
@@ -35,16 +36,16 @@ public class CatchSpawn : MonoBehaviour {
         }
 
         //set the spawn position
-        Vector3 spawnPosition = new Vector3(0.1f + randomX, 0.5f, 3.9f);
+        GameObject spawnGridCube = GameObject.Find("" + Grid.size.z + randomX);
+        spawnGridCube.transform.tag = "CatchCubeSelected";
 
         //instantiate the catch on a position
-        GameObject instObj = Instantiate(catchObject, spawnPosition, Quaternion.identity);
+        GameObject instObj = Instantiate(catchObject, spawnGridCube.transform);
         instObj.name = "Catch";
+        instObj.transform.localPosition = new Vector3(0f, 3f, 0f);
 
         //tag and tell other scripts which is the new Catch position
-        catchCubeName = "" + Mathf.Round(spawnPosition.z) + Mathf.Round(spawnPosition.x);
-        GameObject cubeUnder = GameObject.Find(catchCubeName);
-        cubeUnder.transform.tag = "CatchCubeSelected";
+        catchCubeName = spawnGridCube.transform.name;
     }
 
     /*  CheckAliveCatch
