@@ -2,22 +2,19 @@
 
 public class Grid :MonoBehaviour {
 
-    public int gridSizeX;
-    public int gridSizeZ;
+    [Header("Grid")]
+    public Vector3 gridSize;
+    public Vector3 gridFirstBlock;
 
-    public int gridStartX = 0;
-    public int gridStartZ = 0;
+    [Header("The destination for the catch")]
+    public Vector3 destination;
 
     static public Vector3 size;
     static public Vector3 start;
     // Use this for initialization
     void Start () {
-        size.x = gridSizeX;
-        size.y = 0;
-        size.z = gridSizeZ;
-
-        start.x = gridStartX;
-        start.y = 0;
-        start.z = gridStartZ;
+        size = gridSize;
+        start = gridFirstBlock;
+        HighlightController.catchDestination = destination;
     }
 }

@@ -2,13 +2,6 @@
 
 public class HighlightController : MonoBehaviour {
 
-	[Header("Grid Size Values")]
-	public int gridSizeX = 4;
-	public int gridSizeZ = 3;
-    [Space]
-    public int catchXPosition;
-    public int catchZPosition;
-
 	[Header("Materials")]
 	public Material normalMat;
 	public Material selectedMat;
@@ -23,10 +16,6 @@ public class HighlightController : MonoBehaviour {
     };
 
     static public Vector3 catchDestination;
-
-    private void Start () {
-        catchDestination = new Vector3(catchXPosition, 0f, catchZPosition);
-    }
 
     /*
      * Deselects a grid cube with the given string name ( in format zx )
@@ -70,20 +59,20 @@ public class HighlightController : MonoBehaviour {
     //Deselects all cubes on the field
     public void deselectAll() {
         //0->grid size X
-        for (int x = 0; x < gridSizeX; x++) {
+        for (int x = 0; x < Grid.size.x; x++) {
             //0->grid size Z
-            for (int z = 0; z < gridSizeZ; z++) {
+            for (int z = 0; z < Grid.size.z; z++) {
                 //Get the current cube name
                 string currentGrid = "" + z + x;
 
                 //if it is the grid cube with the catch
-                if (z == gridSizeZ - 1 && CatchSpawn.catchCubeName == currentGrid) deselect(currentGrid, DeselectType.CatchSpawn);
+                if (z == Grid.size.z - 1 && CatchSpawn.catchCubeName == currentGrid) deselect(currentGrid, DeselectType.CatchSpawn);
 
                 //if any other catch cube with no catch on it
-                else if (z == gridSizeZ - 1) deselect(currentGrid, DeselectType.CatchGrid);
+                else if (z == Grid.size.z - 1) deselect(currentGrid, DeselectType.CatchGrid);
 
                 //if the move target cube
-                else if (x == catchXPosition && z == catchZPosition) deselect(currentGrid, DeselectType.MoveTarget);
+                else if (x == catchDestination.x && z == catchDestination.z) deselect(currentGrid, DeselectType.MoveTarget);
 
                 //if any othger normal grid cube
                 else deselect(currentGrid, DeselectType.Normal);
@@ -102,15 +91,15 @@ public class HighlightController : MonoBehaviour {
 		GameObject nextCube, prevCube;
 
 		//Cycling through the grid on X axis, starting from Players pos to left and right
-		for (float i = pos.x + 1; done < gridSizeX; done++, i++) {
+		for (float i = pos.x + 1; done < Grid.size.x; done++, i++) {
 			nextCube = GameObject.Find ("" + pos.z + i);
 			prevCube = GameObject.Find ("" + pos.z + (i - 2*done));
 
 			//if NextCube exists change its material and make it available
-			xUpAllow = onCube(nextCube, xUpAllow);
+			xUpAllow = checkAndHighlight(nextCube, xUpAllow);
 
 			//if PrevCube exists change its material and make it available
-			xDownAllow = onCube(prevCube, xDownAllow);
+			xDownAllow = checkAndHighlight(prevCube, xDownAllow);
 		}
 	}
 
@@ -120,15 +109,15 @@ public class HighlightController : MonoBehaviour {
 		GameObject nextCube, prevCube;
 
 		//Cycling through the grid on Z axis, starting from Players pos to left and right
-		for (float i = pos.z + 1; done < gridSizeZ; done++, i++) {
+		for (float i = pos.z + 1; done < Grid.size.z; done++, i++) {
 			nextCube = GameObject.Find ("" + i + pos.x);
 			prevCube = GameObject.Find ("" + (i - 2*done) + pos.x);
 
 			//if NextCube exists change its material and make it available
-			zUpAllow = onCube(nextCube, zUpAllow);
+			zUpAllow = checkAndHighlight(nextCube, zUpAllow);
 
 			//if PrevCube exists change its material and make it available
-			zDownAllow = onCube(prevCube, zDownAllow);
+			zDownAllow = checkAndHighlight(prevCube, zDownAllow);
 		}
 	}
 		
@@ -149,7 +138,7 @@ public class HighlightController : MonoBehaviour {
     //Highlights cube if available
     //Returns true if highlighted
     //Returns false if not ( occupied )
-    bool onCube(GameObject cube, bool allow) {
+    bool checkAndHighlight(GameObject cube, bool allow) {
         if (cube != null) {
             if (isFree(cube) && allow) {
                 highlightCube(cube);

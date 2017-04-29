@@ -35,7 +35,7 @@ public class CatchSpawn : MonoBehaviour {
         }
 
         //set the spawn position
-        GameObject spawnGridCube = GameObject.Find("" + Grid.size.z + randomX);
+        GameObject spawnGridCube = GameObject.Find("" + (Grid.size.z - 1) + randomX);
         Transform dashedBorder = spawnGridCube.transform.GetChild(0);
         dashedBorder.gameObject.SetActive(true);
         spawnGridCube.transform.tag = "CatchCubeSelected";

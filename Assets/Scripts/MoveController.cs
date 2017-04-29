@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MoveController : MonoBehaviour {
 
@@ -15,8 +13,7 @@ public class MoveController : MonoBehaviour {
 	public Material selectedMat;
     public Material targetMat;
 
-    [System.NonSerialized]
-    public Vector3 newPosition;
+    private Vector3 newPosition;
     static public GameObject activePlayer;
     
 	// Use this for initialization
@@ -44,7 +41,8 @@ public class MoveController : MonoBehaviour {
                      * if true sets new position for the Player
                      * if not skips
                      * */
-                    if ( (hit.transform.tag == "Catch" && GameObject.Find("" + Mathf.Round(hit.point.z) + Mathf.Round(hit.point.x)).transform.tag == "Selected")
+                    GameObject cubeUnderCatch = GameObject.Find("" + Mathf.Round(hit.point.z) + Mathf.Round(hit.point.x));
+                    if ( (hit.transform.tag == "Catch" && cubeUnderCatch.transform.tag == "Selected")
                         || hit.transform.tag == "Selected") {
                         //give a new position to the player(cube), rounded so it matches grid
                         newPosition = new Vector3(Mathf.Round(hit.point.x), transform.position.y, Mathf.Round(hit.point.z));
@@ -62,7 +60,7 @@ public class MoveController : MonoBehaviour {
 
         //Move the cube to the new position (same if no new click given)
         if (newPosition != transform.parent.position) {
-            if (newPosition.z == Grid.size.z && transform.childCount < 2) {
+            if (newPosition.z == Grid.size.z - 1 && transform.childCount < 2) {
                 GetComponent<Animator>().SetBool("catch", true);
                 newPosition.z -= 1;
             } else {
@@ -70,10 +68,11 @@ public class MoveController : MonoBehaviour {
             }
         }
 
-		//if cube is selected before it reaches its new position
-		//highlights the path when it reaches it
-		if (isSelected ())
-			selectPath ();
+        //if cube is selected before it reaches its new position
+        //highlights the path when it reaches it
+        if (isSelected()) {
+            selectPath();
+        }
 	}
 
 	//on click on the player object
@@ -94,9 +93,7 @@ public class MoveController : MonoBehaviour {
 
 	//isSelected() return true if cube is selected, false if not
 	bool isSelected() {
-		if (transform.tag == "Player")
-			return false;
-		return true;
+        return !(transform.tag == "Player");
 	}
 		
 	//selects available PATH (see HighlightController)
@@ -107,7 +104,7 @@ public class MoveController : MonoBehaviour {
 	//selects cube
 	void selectThis() {
         activePlayer = transform.gameObject;
-        Materials.set(transform.gameObject, selectedMat);
+        Materials.set(activePlayer, selectedMat);
         transform.tag = "PlayerSelected";
 	}
 
@@ -123,12 +120,7 @@ public class MoveController : MonoBehaviour {
 
 	//deselects cube
 	void deselectThis() {
-        Material newMat;
-        if (transform.name.Contains("Target")) {
-            newMat = targetMat;
-        } else {
-            newMat = normalMat;
-        }
+        Material newMat = transform.name.Contains("Target") ? targetMat : normalMat; ;
         Materials.set(transform.gameObject, newMat);
         transform.tag = "Player";
 	}
