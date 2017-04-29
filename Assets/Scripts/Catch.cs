@@ -5,6 +5,7 @@ public class Catch : MonoBehaviour {
 
     public float timeToCatch = 10;
     public GameObject timeLeftPrefab;
+    public Material playerMat;
 
     private Timer timer;
     private Transform image;
@@ -60,10 +61,18 @@ public class Catch : MonoBehaviour {
 		/* If its first collision
 		 * */
 		if (!collided) {
-			transform.parent = collision.transform; //make it a child of object it has collided with
+            //deactivates the Dashed border on the catch position
+            HighlightController.deactivateAllDashedBorders();
+
+
+            transform.parent = collision.transform.parent; //make it a child of object it has collided with
+            transform.SetAsLastSibling(); //sets the catch as last sibling in p1 gameobject
 			transform.localPosition = new Vector3 (0f, 0.6f, 0f); //sets its local position to center
+
 			collided = true; //no more collisions
+
 			GetComponent<SphereCollider> ().enabled = false; //disable sphere colider for clicks.
+            collision.transform.GetComponent<Animator>().SetBool("catch", false); //disables the animation of the cube
 
 
             /* get a reference to the last cube with the catch
@@ -125,14 +134,27 @@ public class Catch : MonoBehaviour {
         RaycastHit hit;
         //if it has collided and there is something above the destroy possition
         Vector3 destination = HighlightController.catchDestination;
+
         if (Physics.Raycast(destination, Vector3.up, out hit)) {
+
             //if that is player and has a child in it 
             if (hit.transform.name.Contains("Target") && hit.transform.childCount > 0) {
-                int nameLength = transform.parent.name.Length - 6;
-                transform.parent.name = transform.parent.name.Substring(0, nameLength);
+
+                //getting the real cube reference
+                Transform player = transform.parent.GetChild(0);
+
+                //length of the player GameObject name
+                int nameLength = transform.parent.GetChild(0).name.Length;
+                
+                //removing the last 6 simbols (TARGET)
+                player.name = player.name.Substring(0, nameLength - 6);
+
+                //destroying the catch
                 destroyAll(false);
+
+                //Adds Score and refreshes material
                 Score.addScore();
-                Materials.set(transform.parent.gameObject, "PlayerMat");
+                Materials.set(player.gameObject, playerMat);
             }
         }
     }

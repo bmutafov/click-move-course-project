@@ -61,11 +61,13 @@ public class MoveController : MonoBehaviour {
 		}
 
         //Move the cube to the new position (same if no new click given)
-        if (newPosition != transform.position) {
-            moveCube(newPosition);
-            FPSController.setFps(30);
-        } else {
-            FPSController.setFps(10);
+        if (newPosition != transform.parent.position) {
+            if (newPosition.z == Grid.size.z && transform.childCount < 2) {
+                GetComponent<Animator>().SetBool("catch", true);
+                newPosition.z -= 1;
+            } else {
+                moveCube(newPosition);
+            }
         }
 
 		//if cube is selected before it reaches its new position
@@ -86,8 +88,8 @@ public class MoveController : MonoBehaviour {
 	}
 
 	void moveCube(Vector3 newPosition) {
-		float step = Time.deltaTime * speed;
-		transform.position = Vector3.MoveTowards (transform.position, newPosition, step);
+        float step = Time.deltaTime * speed;
+		transform.parent.position = Vector3.MoveTowards (transform.position, newPosition, step);
 	}
 
 	//isSelected() return true if cube is selected, false if not
@@ -105,7 +107,7 @@ public class MoveController : MonoBehaviour {
 	//selects cube
 	void selectThis() {
         activePlayer = transform.gameObject;
-        Materials.set(transform.gameObject, selectedMat.name);
+        Materials.set(transform.gameObject, selectedMat);
         transform.tag = "PlayerSelected";
 	}
 
@@ -127,7 +129,7 @@ public class MoveController : MonoBehaviour {
         } else {
             newMat = normalMat;
         }
-        Materials.set(transform.gameObject, newMat.name);
+        Materials.set(transform.gameObject, newMat);
         transform.tag = "Player";
 	}
 }

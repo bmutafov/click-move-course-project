@@ -11,6 +11,7 @@ TagManager:
   - CatchCube
   - CatchCubeSelected
   - PlayerSelected
+  - Dash
   layers:
   - Default
   - TransparentFX

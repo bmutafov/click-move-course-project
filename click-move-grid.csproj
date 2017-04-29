@@ -80,7 +80,6 @@
     <Compile Include="Assets\Scripts\Barrier.cs" />
     <Compile Include="Assets\Scripts\Catch.cs" />
     <Compile Include="Assets\Scripts\CatchSpawn.cs" />
-    <Compile Include="Assets\Scripts\FPSController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\HighlightController.cs" />

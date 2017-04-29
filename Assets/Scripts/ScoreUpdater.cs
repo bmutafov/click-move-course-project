@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+
 public class ScoreUpdater : MonoBehaviour {
 
     public Text displayText;
     public TextType textType;
+    public string scoreMessage = "Score";
 
     private int currentScore;
 
@@ -27,7 +27,7 @@ public class ScoreUpdater : MonoBehaviour {
     void UpdateText() {
         if (textType == TextType.Score) {
             currentScore = Score.getScore();
-            displayText.text = "Score: " + currentScore;
+            displayText.text = scoreMessage + ": " + currentScore;
             if (currentScore > Score.getHighScore()) Score.setHighScore();
         } else if(textType == TextType.Highscore) {
             currentScore = Score.getHighScore();

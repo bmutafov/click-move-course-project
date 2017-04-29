@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HighlightController : MonoBehaviour {
+
 	[Header("Grid Size Values")]
 	public int gridSizeX = 4;
 	public int gridSizeZ = 3;
@@ -28,6 +27,7 @@ public class HighlightController : MonoBehaviour {
     private void Start () {
         catchDestination = new Vector3(catchXPosition, 0f, catchZPosition);
     }
+
     /*
      * Deselects a grid cube with the given string name ( in format zx )
      * DeselectType tells what atributes to put on the new deselected cube
@@ -39,28 +39,28 @@ public class HighlightController : MonoBehaviour {
      * */
     void deselect(string name, DeselectType type) {
         string newTag = null;
-        string newMat = null;
+        Material newMat = null;
         GameObject cube = GameObject.Find(name);
 
         switch (type) {
             case DeselectType.Normal:
                 newTag = "GridCube";
-                newMat = normalMat.name;
+                newMat = normalMat;
                 break;
 
             case DeselectType.CatchGrid:
                 newTag = "CatchCube";
-                newMat = cubeCatchMat.name;
+                newMat = cubeCatchMat;
                 break;
 
             case DeselectType.CatchSpawn:
                 newTag = "CatchCubeSelected";
-                newMat = cubeCatchMat.name;
+                newMat = cubeCatchMat;
                 break;
 
             case DeselectType.MoveTarget:
                 newTag = "GridCube";
-                newMat = targetMat.name;
+                newMat = targetMat;
                 break;
         }
         cube.tag = newTag;
@@ -173,10 +173,19 @@ public class HighlightController : MonoBehaviour {
             available = true;
         }
         if (available) {
-            Materials.set(cube, selectedMat.name);
+            Materials.set(cube, selectedMat);
             cube.tag = "Selected";
         }
     }
 
+    /*
+     * Deactivates all borders
+     * */
+    static public void deactivateAllDashedBorders() {
+        GameObject[] dashedBorders = GameObject.FindGameObjectsWithTag("Dash");
+        foreach(GameObject border in dashedBorders) {
+            border.SetActive(false);
+        }
+    }
 
 }

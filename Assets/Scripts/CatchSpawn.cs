@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 
 public class CatchSpawn : MonoBehaviour {
 
@@ -24,11 +24,10 @@ public class CatchSpawn : MonoBehaviour {
    void spawn() {
         //roundomizing x position for catch object
         int randomX = Mathf.RoundToInt(Random.Range(Grid.start.x, (Grid.size.x - 1)));
-  
-        //finding random player
-        //TODO change range
-        GameObject player = GameObject.Find("Player" + Random.Range(1, 3));
-        Materials.set(player, cubeTargetMat.name);
+
+        string newPlayer = "Player" + Random.Range(1, 3);
+        GameObject player = GameObject.Find(newPlayer);
+        Materials.set(player, cubeTargetMat);
         player.name = player.name + "Target";
         ParticleSystem ps = player.GetComponentInChildren<ParticleSystem>();
         if (!ps.isPlaying) {
@@ -37,12 +36,14 @@ public class CatchSpawn : MonoBehaviour {
 
         //set the spawn position
         GameObject spawnGridCube = GameObject.Find("" + Grid.size.z + randomX);
+        Transform dashedBorder = spawnGridCube.transform.GetChild(0);
+        dashedBorder.gameObject.SetActive(true);
         spawnGridCube.transform.tag = "CatchCubeSelected";
 
         //instantiate the catch on a position
         GameObject instObj = Instantiate(catchObject, spawnGridCube.transform);
         instObj.name = "Catch";
-        instObj.transform.localPosition = new Vector3(0f, 3f, 0f);
+        instObj.transform.localPosition = new Vector3(0f, 3.5f, 0f);
 
         //tag and tell other scripts which is the new Catch position
         catchCubeName = spawnGridCube.transform.name;
