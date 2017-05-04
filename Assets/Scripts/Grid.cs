@@ -11,6 +11,7 @@ public class Grid :MonoBehaviour {
 
     static public Vector3 size;
     static public Vector3 start;
+    
     // Use this for initialization
     void Start () {
         size = gridSize;

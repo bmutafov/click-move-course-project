@@ -7,9 +7,10 @@ public class CatchSpawn : MonoBehaviour {
     public Material cubeTargetMat;
 
     static public string catchCubeName;
+    static public GameObject lastPlayer;
 
     // Use this for initialization
-    void Start() {
+    void start() {
         spawn();
     }
 
@@ -19,16 +20,24 @@ public class CatchSpawn : MonoBehaviour {
     }
 
     /*  Spawns a new catch on a random position
-     * 
-     * */
+     */
    void spawn() {
-        //roundomizing x position for catch object
+        //randomizing x position for catch object
         int randomX = Mathf.RoundToInt(Random.Range(Grid.start.x, (Grid.size.x - 1)));
 
-        string newPlayer = "Player" + Random.Range(1, 3);
+        //selecting a new player who has to catch
+        //cant be the previous one
+        string newPlayer = selectNewPlayer();
         GameObject player = GameObject.Find(newPlayer);
+        lastPlayer = player;
+
+        //make the selected player a different color
         Materials.set(player, cubeTargetMat);
+
+        //tag him so we know whos the player
         player.name = player.name + "Target";
+
+        //play a little particle system (explosion) on the new selected player
         ParticleSystem ps = player.GetComponentInChildren<ParticleSystem>();
         if (!ps.isPlaying) {
             ps.Play();
@@ -36,18 +45,45 @@ public class CatchSpawn : MonoBehaviour {
 
         //set the spawn position
         GameObject spawnGridCube = GameObject.Find("" + (Grid.size.z - 1) + randomX);
+        //get the dashed border and make it active
         Transform dashedBorder = spawnGridCube.transform.GetChild(0);
         dashedBorder.gameObject.SetActive(true);
+        //tag the new cube so player can click on it
         spawnGridCube.transform.tag = "CatchCubeSelected";
 
         //instantiate the catch on a position
         GameObject instObj = Instantiate(catchObject, spawnGridCube.transform);
         instObj.name = "Catch";
+
+        //set the new position to be centered on the grid
         instObj.transform.localPosition = new Vector3(0f, 3.5f, 0f);
 
         //tag and tell other scripts which is the new Catch position
         catchCubeName = spawnGridCube.transform.name;
     }
+
+    /*
+     * selects a new player to be the Active one
+     * (who has to catch)
+     * can't be the same as the previous one
+     * returns string name of the new player
+     * */
+    string selectNewPlayer() {
+        string newPlayer;
+        //if it isnt first player
+        if (lastPlayer != null) {
+            //generate new player if is same as the previous one
+            do {
+                newPlayer = "Player" + Random.Range(1, Players.count + 1);
+            } while (newPlayer == lastPlayer.transform.name);
+        } else {
+            //if first player just select the first one on random
+            newPlayer = "Player" + Random.Range(1, Players.count + 1);
+        }
+        //return the name of the new player
+        return newPlayer;
+    }
+
 
     /*  CheckAliveCatch
      *  

@@ -58,6 +58,10 @@ public class Barrier : MonoBehaviour {
         }
     }
 
+    private void OnMouseUp () {
+        move = Move.Static;
+    }
+
     /*
      * Moves the barrier
      * Must be called every frame
@@ -94,6 +98,11 @@ public class Barrier : MonoBehaviour {
             if (!HighlightController.isFree(newPosCube)) {
                 newPosition = oldPosition;
                 move = Move.Static;
+            }
+
+            //forbiding movement on the last row of the grid
+            if (newPosition.z == Grid.size.z/2 + 1) {
+                newPosition.z = Grid.size.z / 2;
             }
         }
 

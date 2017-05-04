@@ -49,8 +49,7 @@ public class Catch : MonoBehaviour {
                 destroyAll(true);
             }
             moveUIWithObject(image.gameObject, 50, 100);
-            string displayTime = secondsToMinutes(timeleft);
-            remainingTimeText.text = displayTime;
+            remainingTimeText.text = secondsToMinutes(timeleft);
         }
     }
 
@@ -60,7 +59,7 @@ public class Catch : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		/* If its first collision
 		 * */
-		if (!collided) {
+		if (!collided && collision.transform.tag == "Player") {
             //deactivates the Dashed border on the catch position
             HighlightController.deactivateAllDashedBorders();
 

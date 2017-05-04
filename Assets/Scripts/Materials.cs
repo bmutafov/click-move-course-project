@@ -9,7 +9,7 @@ public class Materials : MonoBehaviour {
      * */
     static public void set(GameObject objectToSet, Material material) {
         //if we couldn't find anything throw an exception
-        if (material == null) throw new System.Exception("Couldn't find material: " + material.name + "Are you sure you have added it to MaterialsControl script?");
+        if (material == null) throw new System.Exception("Material passed is null.");
         if (objectToSet == null) throw new System.Exception("No GameObject supplied or GameObject is null. Materials.set()");
         //set the new material
         objectToSet.GetComponent<Renderer>().material = material;

@@ -120,7 +120,7 @@ public class MoveController : MonoBehaviour {
 
 	//deselects cube
 	void deselectThis() {
-        Material newMat = transform.name.Contains("Target") ? targetMat : normalMat; ;
+        Material newMat = transform.name.Contains("Target") ? targetMat : normalMat;
         Materials.set(transform.gameObject, newMat);
         transform.tag = "Player";
 	}
