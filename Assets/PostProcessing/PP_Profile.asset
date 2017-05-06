@@ -42,8 +42,8 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 1
     m_Settings:
-      intensity: 2
-      radius: 0.1
+      intensity: 0.28
+      radius: 1
       sampleCount: 3
       downsampling: 1
       forceForwardCompatibility: 1
@@ -55,7 +55,7 @@ MonoBehaviour:
       reflection:
         blendType: 1
         reflectionQuality: 0
-        maxDistance: 100
+        maxDistance: 126
         iterationCount: 256
         stepSize: 3
         widthModifier: 0.5
@@ -72,14 +72,14 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       focusDistance: 10
-      aperture: 17.3
+      aperture: 15.6
       focalLength: 19
       useCameraFov: 0
       kernelSize: 0
   motionBlur:
     m_Enabled: 1
     m_Settings:
-      shutterAngle: 270
+      shutterAngle: 188
       sampleCount: 10
       frameBlending: 1
   eyeAdaptation:
@@ -138,7 +138,7 @@ MonoBehaviour:
           power: {r: 1, g: 0.8860728, b: 0.971518, a: 0}
           offset: {r: 0.9656566, g: 0.9484949, b: 1, a: 0}
         linear:
-          lift: {r: 1, g: 1, b: 1, a: 0}
+          lift: {r: 0.97630715, g: 0.97327805, b: 1, a: 0}
           gamma: {r: 1, g: 1, b: 1, a: 0}
           gain: {r: 1, g: 1, b: 1, a: 0}
       curves:

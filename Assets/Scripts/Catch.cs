@@ -3,13 +3,12 @@ using UnityEngine.UI;
 
 public class Catch : MonoBehaviour {
 
-    public float timeToCatch = 10;
+    public float timeToBring;
     public GameObject timeLeftPrefab;
     public Material playerMat;
 
-    private Timer timer;
+    private Timer bringTimer;
     private Transform image;
-    private new Camera camera;
     private Text remainingTimeText;
     private bool collided = false;
     private bool counterActive = false;
@@ -22,9 +21,6 @@ public class Catch : MonoBehaviour {
         GameObject canvas = GameObject.Find("Canvas");
         GameObject instObj = Instantiate(timeLeftPrefab, canvas.transform);
         instObj.transform.SetSiblingIndex(2);
-        //Finding the maincamera GameObject
-        camera = GameObject.Find("MainCamera").GetComponent<Camera>();
-
         /*
          * Getting references to image on the prefab
          * And the time left text
@@ -33,7 +29,7 @@ public class Catch : MonoBehaviour {
         remainingTimeText = instObj.transform.GetChild(0).GetComponent<Text>();
 
         /* getting reference to the timer script */
-        timer = transform.GetComponent<Timer> ();
+        bringTimer = transform.GetComponent<Timer> ();
     }
 	
 	// Update is called once per frame
@@ -43,13 +39,13 @@ public class Catch : MonoBehaviour {
             CatchSpawn.catchCubeName = null;
         }
         if(counterActive) {
-            float timeleft = timer.TimeRemaining();
+            float timeleft = bringTimer.TimeRemaining();
             if(timeleft <= 0) {
                 counterActive = false;
                 destroyAll(true);
             }
-            moveUIWithObject(image.gameObject, 50, 100);
-            remainingTimeText.text = secondsToMinutes(timeleft);
+            bringTimer.moveUIWithObject(image.gameObject, 50, 100, transform.position);
+            remainingTimeText.text = bringTimer.secondsToMinutes(timeleft);
         }
     }
 
@@ -83,46 +79,11 @@ public class Catch : MonoBehaviour {
             /*
              * Start timer
              * */
-            timer.startTimer(timeToCatch);
+            CatchSpawn.disableText = true;
+            bringTimer.startTimer(timeToBring);
             counterActive = true;
 		}
 	}
-
-    /*
-     * gets time in seconds
-     * returns a string
-     * formatted in 0:00
-     * */
-    string secondsToMinutes(float time) {
-        time = Mathf.Round(time);
-        string minutes, seconds;
-        if (time > 59) {
-            int intMinutes = (int)time / 60;
-            minutes = intMinutes.ToString();
-            seconds = (time - intMinutes * 60).ToString();
-        } else {
-            minutes = "0";
-            seconds = time.ToString();
-        }
-        if(seconds.Length == 1) {
-            seconds = "0" + seconds;
-        }
-        return minutes + ":" + seconds;
-    }
-
-
-    /*
-     * Moves UI element to stick over game Object
-     * 
-     * flaot x, float z
-     * additional spacing on those axes
-     * */
-    void moveUIWithObject (GameObject toMove, float x, float z) {
-        Vector3 screenPos = camera.WorldToScreenPoint(transform.position);
-        screenPos = new Vector3(screenPos.x + x, screenPos.y + z, screenPos.z);
-        toMove.GetComponent<RectTransform>().position = screenPos;
-    }
-
     /*
      * Checks if Player has a child ( catch )
      * And is on Destination ( coordinates on Vector3 destination )

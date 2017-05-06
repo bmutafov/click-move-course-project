@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a8c81d0075e464faa380b556ba38fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToCatch: 12
+  timeToBring: 12
   timeLeftPrefab: {fileID: 1986802724395308, guid: ee4832162f3a80b43b87a1a7f5f5f27c,
     type: 2}
   playerMat: {fileID: 2100000, guid: c601ba85fda379a43b02aad9e62b45f4, type: 2}
