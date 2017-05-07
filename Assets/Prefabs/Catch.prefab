@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54543366265060962}
   - component: {fileID: 114207996047707242}
   - component: {fileID: 114807104030755270}
+  - component: {fileID: 114612839455966408}
   - component: {fileID: 95409171077393866}
   m_Layer: 0
   m_Name: Catch
@@ -127,10 +128,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a8c81d0075e464faa380b556ba38fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToBring: 12
-  timeLeftPrefab: {fileID: 1986802724395308, guid: ee4832162f3a80b43b87a1a7f5f5f27c,
+  timeToCatch: 5
+  timeToBring: 10
+  timeToBringPrefab: {fileID: 1986802724395308, guid: ee4832162f3a80b43b87a1a7f5f5f27c,
+    type: 2}
+  timeToCatchPrefab: {fileID: 1142973486251744, guid: 1211a5768b3622642b5df504dc1033b4,
     type: 2}
   playerMat: {fileID: 2100000, guid: c601ba85fda379a43b02aad9e62b45f4, type: 2}
+  timeToCatchTimer: {fileID: 114807104030755270}
+  timeToBringTimer: {fileID: 114612839455966408}
+--- !u!114 &114612839455966408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525807980197126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800ff01839408f9439d55ac495bb9bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114807104030755270
 MonoBehaviour:
   m_ObjectHideFlags: 1

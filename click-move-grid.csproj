@@ -134,6 +134,7 @@
     <Compile Include="Assets\Scripts\Score.cs" />
     <Compile Include="Assets\Scripts\ScoreUpdater.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
+    <Compile Include="Assets\Scripts\UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />

@@ -9,43 +9,25 @@ public class CatchSpawn : MonoBehaviour {
     public GameObject catchObject;
     public Material spawnCubeMaterial;
     public Material cubeTargetMat;
+    public GameObject timeToCatchPrefab;
 
     static public string catchCubeName;
     static public GameObject lastPlayer;
-    static public bool disableText = false;
-    private GameObject player;
 
+    private GameObject player;
     private Text remainingTimeText;
-    private Timer Catchtimer;
     private bool counterActive = false;
 
     // Use this for initialization
     void Start() {
         //reference to the Timer script
-        Catchtimer = transform.GetComponent<Timer> ();
-        Catchtimer.startTimer(timeToCatch);
-        counterActive = true;
         spawn();
     }
 
     // Update is called once per frame
     void Update() {
         if (!checkAliveCatch() && !GameManager.isGameOver) {
-            // Catchtimer.enabled = Catchtimer.enabled;
-            TimeToCatchCube.enabled = true;
-            Catchtimer.restartTimer(timeToCatch);
             spawn();
-        }else if(disableText == true) {
-            hideText();
-        }
-        if (counterActive) {
-            float timeleft = Catchtimer.TimeRemaining();
-            if (timeleft <= 0) {
-                counterActive = false;
-                GameManager.gameOver();
-            }
-            TimeToCatchCube.text = Catchtimer.secondsToMinutes(timeleft);
-            Catchtimer.moveUIWithObject(TimeToCatchCube.gameObject, 100, 150, player.transform.position);
         }
     }
 
@@ -75,9 +57,11 @@ public class CatchSpawn : MonoBehaviour {
 
         //set the spawn position
         GameObject spawnGridCube = GameObject.Find("" + (Grid.size.z - 1) + randomX);
+
         //get the dashed border and make it active
         Transform dashedBorder = spawnGridCube.transform.GetChild(0);
         dashedBorder.gameObject.SetActive(true);
+
         //tag the new cube so player can click on it
         spawnGridCube.transform.tag = "CatchCubeSelected";
 
@@ -128,14 +112,6 @@ public class CatchSpawn : MonoBehaviour {
         GameObject alive = GameObject.Find("Catch");
         if (alive == null) return false;
         return true;
-    }
-
-    void hideText() {
-        if (disableText) {
-            disableText = false;
-            TimeToCatchCube.enabled = false;
-            Catchtimer.pauseTimer(true);
-        }
     }
 }
     

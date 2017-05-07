@@ -6,11 +6,6 @@ public class Timer : MonoBehaviour {
     private bool isStarted = false;
     private bool isPaused = false;
 
-    private new Camera camera;
-    void Start() {
-        //Finding the maincamera GameObject
-        camera = GameObject.Find("MainCamera").GetComponent<Camera>();
-    }
     // Update is called once per frame
     void Update () {    
         if (isStarted && !isPaused) runTimer();
@@ -36,6 +31,7 @@ public class Timer : MonoBehaviour {
         timeleft = time;
         isPaused = false;
     }
+
     public  float TimeRemaining() {
         return timeleft;
     }
@@ -48,12 +44,16 @@ public class Timer : MonoBehaviour {
     public void pauseTimer(bool state) {
         isPaused = state;
     }
+
+    public void stopTimer() {
+        isStarted = false;
+    }
     /*
      * gets time in seconds
      * returns a string
      * formatted in 0:00
      * */
-    public string secondsToMinutes(float time) {
+    static public string secondsToMinutes(float time) {
         time = Mathf.Round(time);
         string minutes, seconds;
         if (time > 59) {
@@ -69,17 +69,5 @@ public class Timer : MonoBehaviour {
             seconds = "0" + seconds;
         }
         return minutes + ":" + seconds;
-    }
-
-    /*
-     * Moves UI element to stick over game Object
-     * 
-     * flaot x, float z
-     * additional spacing on those axes
-      * */
-    public void moveUIWithObject(GameObject toMove, float x, float z, Vector3 position) {
-        Vector3 screenPos = camera.WorldToScreenPoint(position);
-        screenPos = new Vector3(screenPos.x + x, screenPos.y + z, screenPos.z);
-        toMove.GetComponent<RectTransform>().position = screenPos;
     }
 }
