@@ -125,16 +125,17 @@
     <Compile Include="Assets\Scripts\Barrier.cs" />
     <Compile Include="Assets\Scripts\Catch.cs" />
     <Compile Include="Assets\Scripts\CatchSpawn.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\HighlightController.cs" />
-    <Compile Include="Assets\Scripts\Materials.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\MoveDetect.cs" />
     <Compile Include="Assets\Scripts\MoveController.cs" />
-    <Compile Include="Assets\Scripts\Players.cs" />
-    <Compile Include="Assets\Scripts\Score.cs" />
-    <Compile Include="Assets\Scripts\ScoreUpdater.cs" />
-    <Compile Include="Assets\Scripts\Timer.cs" />
-    <Compile Include="Assets\Scripts\UI.cs" />
+    <Compile Include="Assets\Scripts\Static\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Static\Grid.cs" />
+    <Compile Include="Assets\Scripts\Static\Materials.cs" />
+    <Compile Include="Assets\Scripts\Static\Players.cs" />
+    <Compile Include="Assets\Scripts\Static\Score.cs" />
+    <Compile Include="Assets\Scripts\Static\ScoreUpdater.cs" />
+    <Compile Include="Assets\Scripts\Static\Timer.cs" />
+    <Compile Include="Assets\Scripts\Static\UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />

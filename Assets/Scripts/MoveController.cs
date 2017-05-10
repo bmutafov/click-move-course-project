@@ -5,6 +5,7 @@ public class MoveController : MonoBehaviour {
 	[Header("Scripting and Values")]
 	public Transform HighlightController;
 	public float speed = 4;
+    public bool randomStartingPosition = false;
 
 	[Space]
 
@@ -18,7 +19,11 @@ public class MoveController : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-		newPosition = transform.position;
+        if (randomStartingPosition) {
+            newPosition = Players.randomFreePosition();
+        } else {
+            newPosition = transform.position;
+        }
 	}
 	
 	// Update is called once per frame
@@ -124,4 +129,9 @@ public class MoveController : MonoBehaviour {
         Materials.set(transform.gameObject, newMat);
         transform.tag = "Player";
 	}
+
+    public void setNewPosition (Vector3 newPosition) {
+        this.newPosition = newPosition;
+    }
+
 }

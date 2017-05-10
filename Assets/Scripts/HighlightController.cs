@@ -7,12 +7,14 @@ public class HighlightController : MonoBehaviour {
 	public Material selectedMat;
     public Material cubeCatchMat;
     public Material targetMat;
+    public Material bonusMat;
 
     enum DeselectType {
         Normal, //a normal cube in the grid
         CatchGrid, //a grid cube in the catch row, but doesn't have the catch on it
         CatchSpawn, //a grid  cube in the catch row, with the catch
-        MoveTarget //the target where you have to move the cube with the catch
+        MoveTarget, //the target where you have to move the cube with the catch
+        BonusCube //bonus cube for different purposes
     };
 
     static public Vector3 catchDestination;
@@ -30,30 +32,36 @@ public class HighlightController : MonoBehaviour {
         string newTag = null;
         Material newMat = null;
         GameObject cube = GameObject.Find(name);
-
-        switch (type) {
-            case DeselectType.Normal:
+        if (cube != null) {
+            switch (type) {
+                case DeselectType.Normal:
                 newTag = "GridCube";
                 newMat = normalMat;
                 break;
 
-            case DeselectType.CatchGrid:
+                case DeselectType.CatchGrid:
                 newTag = "CatchCube";
                 newMat = cubeCatchMat;
                 break;
 
-            case DeselectType.CatchSpawn:
+                case DeselectType.CatchSpawn:
                 newTag = "CatchCubeSelected";
                 newMat = cubeCatchMat;
                 break;
 
-            case DeselectType.MoveTarget:
+                case DeselectType.MoveTarget:
                 newTag = "GridCube";
                 newMat = targetMat;
                 break;
+
+                case DeselectType.BonusCube:
+                newTag = "BonusCube";
+                newMat = bonusMat;
+                break;
+            }
+            cube.tag = newTag;
+            Materials.set(cube, newMat);
         }
-        cube.tag = newTag;
-        Materials.set(cube, newMat);
     }
 
     //Deselects all cubes on the field
@@ -73,6 +81,8 @@ public class HighlightController : MonoBehaviour {
 
                 //if the move target cube
                 else if (x == catchDestination.x && z == catchDestination.z) deselect(currentGrid, DeselectType.MoveTarget);
+
+                else if (Grid.isBonusDestination(x, z)) deselect(currentGrid, DeselectType.BonusCube);
 
                 //if any othger normal grid cube
                 else deselect(currentGrid, DeselectType.Normal);
@@ -125,6 +135,8 @@ public class HighlightController : MonoBehaviour {
 	//returns true if no
 	//returns false if yes
 	static public bool isFree(GameObject nextCube) {
+        if (nextCube == null) return false;
+        
 		RaycastHit hit;
         if (Physics.Raycast(nextCube.transform.position, Vector3.up, out hit)) {
             //if theres object different than catch, the space is taken

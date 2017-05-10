@@ -3,20 +3,12 @@ using UnityEngine.UI;
 
 public class CatchSpawn : MonoBehaviour {
 
-    public float timeToCatch;
-    public Text TimeToCatchCube;
-
     public GameObject catchObject;
     public Material spawnCubeMaterial;
     public Material cubeTargetMat;
-    public GameObject timeToCatchPrefab;
 
     static public string catchCubeName;
     static public GameObject lastPlayer;
-
-    private GameObject player;
-    private Text remainingTimeText;
-    private bool counterActive = false;
 
     // Use this for initialization
     void Start() {
@@ -40,7 +32,7 @@ public class CatchSpawn : MonoBehaviour {
         //selecting a new player who has to catch
         //cant be the previous one
         string newPlayer = selectNewPlayer();
-        player = GameObject.Find(newPlayer);
+        GameObject player = GameObject.Find(newPlayer);
         lastPlayer = player;
 
         //make the selected player a different color

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a8c81d0075e464faa380b556ba38fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToCatch: 5
+  timeToCatch: 10
   timeToBring: 10
   timeToBringPrefab: {fileID: 1986802724395308, guid: ee4832162f3a80b43b87a1a7f5f5f27c,
     type: 2}

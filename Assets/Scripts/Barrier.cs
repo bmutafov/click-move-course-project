@@ -101,8 +101,9 @@ public class Barrier : MonoBehaviour {
             }
 
             //forbiding movement on the last row of the grid
-            if (newPosition.z == Grid.size.z/2 + 1) {
-                newPosition.z = Grid.size.z / 2;
+            if (newPosition.z == Grid.size.z/2 + 1.5f) {
+                newPosition.z = Grid.size.z / 2 + 0.5f;
+                move = Move.Static;
             }
         }
 

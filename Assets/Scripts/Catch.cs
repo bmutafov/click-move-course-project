@@ -117,9 +117,8 @@ public class Catch : MonoBehaviour {
 
     void destroyOnFinish () {
         RaycastHit hit;
-        Vector3 destination = HighlightController.catchDestination;
 
-        if (Physics.Raycast(destination, Vector3.up, out hit)) {
+        if (Physics.Raycast(HighlightController.catchDestination, Vector3.up, out hit)) {
             //if that is player and has a child in it 
             if (hit.transform.name.Contains("Target") && hit.transform.childCount > 0) {
 
@@ -131,6 +130,8 @@ public class Catch : MonoBehaviour {
                 
                 //removing the last 6 simbols (TARGET)
                 player.name = player.name.Substring(0, nameLength - 6);
+
+                player.GetComponent<MoveController>().setNewPosition(Players.randomFreePosition());
 
                 //destroying the catch
                 destroyAll(false);
