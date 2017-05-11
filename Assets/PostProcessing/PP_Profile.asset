@@ -29,13 +29,13 @@ MonoBehaviour:
     m_Settings:
       excludeSkybox: 0
   antialiasing:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       method: 0
       fxaaSettings:
         preset: 1
       taaSettings:
-        jitterSpread: 0.75
+        jitterSpread: 0.655
         sharpen: 0.3
         stationaryBlending: 0.95
         motionBlending: 0.85
@@ -56,9 +56,9 @@ MonoBehaviour:
         blendType: 1
         reflectionQuality: 0
         maxDistance: 126
-        iterationCount: 256
-        stepSize: 3
-        widthModifier: 0.5
+        iterationCount: 202
+        stepSize: 9
+        widthModifier: 5.48
         reflectionBlur: 5.34
         reflectBackfaces: 0
       intensity:
@@ -72,7 +72,7 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       focusDistance: 2.58
-      aperture: 8
+      aperture: 0.9
       focalLength: 132
       useCameraFov: 0
       kernelSize: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       lut: {fileID: 0}
-      contribution: 0.974
+      contribution: 0.854
   chromaticAberration:
     m_Enabled: 0
     m_Settings:
@@ -289,17 +289,17 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       colored: 1
-      intensity: 0.1
+      intensity: 0
       size: 0.3
-      luminanceContribution: 0.032
+      luminanceContribution: 0
   vignette:
     m_Enabled: 0
     m_Settings:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.618
-      smoothness: 0.101
+      intensity: 0.16
+      smoothness: 0.01
       roundness: 0
       mask: {fileID: 0}
       opacity: 1
