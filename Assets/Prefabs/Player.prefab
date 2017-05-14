@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114720156907407556}
   - component: {fileID: 54485910643299980}
   - component: {fileID: 95980198462155178}
+  - component: {fileID: 114564783642925590}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -158,6 +159,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114564783642925590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1104093867673750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea28aad33bbb5d4dbc39b4fb63bbbd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolToSet: catch
+  value: 0
 --- !u!114 &114720156907407556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HighlightController: {fileID: 0}
   speed: 15
+  randomStartingPosition: 0
   normalMat: {fileID: 2100000, guid: c601ba85fda379a43b02aad9e62b45f4, type: 2}
   selectedMat: {fileID: 2100000, guid: 413f11d9c6f103149b9786ef87011cca, type: 2}
   targetMat: {fileID: 2100000, guid: 95c253edc7c390d4eaf1d326b2edcfba, type: 2}
@@ -2789,8 +2804,8 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: dfbb494c282272e43a98e0f1073a7ae6, type: 2}
+  - {fileID: 2100000, guid: dfbb494c282272e43a98e0f1073a7ae6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

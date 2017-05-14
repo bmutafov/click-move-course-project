@@ -13,6 +13,7 @@ public class Catch : MonoBehaviour {
 
     [Header("Materials")]
     public Material playerMat;
+    public Material grassTopNormalMat;
 
     [Header("Scripts")]
     public Timer timeToCatchTimer;
@@ -32,12 +33,12 @@ public class Catch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (collided) {
-            UI.moveUIWithObject(toBringUI, transform.position, 100, 100);
+            UI.moveUIWithObject(toBringUI, transform.position, 70, 70);
             updateTimerUI(toBringUI.transform.GetChild(0).gameObject, timeToBringTimer);
             destroyOnFinish();
             CatchSpawn.catchCubeName = null;
         } else {
-            updateTimerUI(toCatchUI, timeToCatchTimer);
+            updateTimerUI(toCatchUI.transform.GetChild(0).gameObject, timeToCatchTimer);
         }
     }
 
@@ -83,7 +84,6 @@ public class Catch : MonoBehaviour {
 
     void startCatchTimer () {
         toCatchUI = Instantiate(timeToCatchPrefab, canvas.transform);
-        toCatchUI.transform.localScale = new Vector3(1f, 1f, 1f);
         UI.moveUIWithObject(toCatchUI, transform.position, 0, 75);
         timeToCatchTimer.startTimer(timeToCatch);
     }
@@ -106,7 +106,6 @@ public class Catch : MonoBehaviour {
 
     void disableCollisionsAndAnimations(Collision collision) {
         GetComponent<SphereCollider>().enabled = false; //disable sphere colider for clicks.
-        collision.transform.GetComponent<Animator>().SetBool("catch", false); //disables the animation of the cube
     }
 
     /*
@@ -139,6 +138,7 @@ public class Catch : MonoBehaviour {
                 //Adds Score and refreshes material
                 Score.addScore();
                 Materials.set(player.gameObject, playerMat);
+                Materials.set(player.transform.parent.transform.FindChild("GrassTop").gameObject, grassTopNormalMat);
             }
         }
     }

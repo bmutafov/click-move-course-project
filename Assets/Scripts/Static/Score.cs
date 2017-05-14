@@ -3,15 +3,20 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
-    public static Text scoreText;
+    public GameObject coinVisual;
+
+    static GameObject coinUI;
+
     static public int score = 0;
 
     // Use this for initialization
     void Start () {
+        coinUI = coinVisual;
         score = 0;
 	}
 	
     static public void addScore() {
+        coinUI.GetComponent<Animator>().SetBool("play", true);
         score++;
     }
 

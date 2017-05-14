@@ -60,7 +60,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2418a2b0539fa0d48ac9b29e8eec5070, type: 2}
+  - {fileID: 2100000, guid: 01b0e161a5dbe7143805372285f92536, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,11 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToCatch: 10
   timeToBring: 10
-  timeToBringPrefab: {fileID: 1986802724395308, guid: ee4832162f3a80b43b87a1a7f5f5f27c,
+  timeToBringPrefab: {fileID: 1292469809864938, guid: 78ab11059873a0447a019626cab7bdc3,
     type: 2}
-  timeToCatchPrefab: {fileID: 1142973486251744, guid: 1211a5768b3622642b5df504dc1033b4,
+  timeToCatchPrefab: {fileID: 1089285767022800, guid: ef48cc3fc3cf0584b85d83bba8800399,
     type: 2}
   playerMat: {fileID: 2100000, guid: c601ba85fda379a43b02aad9e62b45f4, type: 2}
+  grassTopNormalMat: {fileID: 2100000, guid: dfbb494c282272e43a98e0f1073a7ae6, type: 2}
   timeToCatchTimer: {fileID: 114851504920912244}
   timeToBringTimer: {fileID: 114318944191821452}
 --- !u!114 &114318944191821452

@@ -50,7 +50,7 @@ PlayerSettings:
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_StereoRenderingPath: 0
-  m_ActiveColorSpace: 1
+  m_ActiveColorSpace: 0
   m_MTRendering: 1
   m_MobileMTRendering: 1
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
@@ -123,7 +123,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: org.elsys.MoveGame
-  bundleVersion: 3.1.44
+  bundleVersion: 3.2.0
   preloadedAssets: []
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -216,14 +216,14 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: a752c0d96825c774387138af8891d50d, type: 3}
+      m_Icon: {fileID: 2800000, guid: 9c26893f39ed97d4fa6fad24acb7ab3b, type: 3}
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: AndroidPlayer
     m_APIs: 0b000000
-    m_Automatic: 0
+    m_Automatic: 1
   m_BuildTargetVRSettings: []
   openGLRequireES31: 0
   openGLRequireES31AEP: 0

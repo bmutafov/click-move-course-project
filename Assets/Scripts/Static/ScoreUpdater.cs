@@ -27,13 +27,13 @@ public class ScoreUpdater : MonoBehaviour {
         if (textType == TextType.Score) {
 
             currentScore = Score.getScore();
-            displayText.text = scoreMessage + ": " + currentScore;
+            displayText.text = scoreMessage + currentScore;
             if (currentScore > Score.getHighScore()) Score.setHighScore();
 
         } else if(textType == TextType.Highscore) {
 
             currentScore = Score.getHighScore();
-            displayText.text = "Highscore: " + currentScore;
+            displayText.text = scoreMessage + currentScore;
 
         }
     }

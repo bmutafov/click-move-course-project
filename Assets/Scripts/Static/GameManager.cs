@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void restartGame() {
+        resumeGame();
         SceneManager.LoadScene("scene01");
     }
 
@@ -51,6 +52,9 @@ public class GameManager : MonoBehaviour {
         QualitySettings.DecreaseLevel(true);
     }
 
+    public void loadMainMenu() {
+        SceneManager.LoadScene("MainMenu");
+    }
 
     void Update() {
         //pausing game when clicking back button

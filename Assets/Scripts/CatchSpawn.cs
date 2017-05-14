@@ -6,6 +6,7 @@ public class CatchSpawn : MonoBehaviour {
     public GameObject catchObject;
     public Material spawnCubeMaterial;
     public Material cubeTargetMat;
+    public Material grassTopSelected;
 
     static public string catchCubeName;
     static public GameObject lastPlayer;
@@ -40,6 +41,7 @@ public class CatchSpawn : MonoBehaviour {
 
         //tag him so we know whos the player
         player.name = player.name + "Target";
+        Materials.set(player.transform.parent.transform.FindChild("GrassTop").gameObject, grassTopSelected);
 
         //play a little particle system (explosion) on the new selected player
         ParticleSystem ps = player.GetComponentInChildren<ParticleSystem>();
