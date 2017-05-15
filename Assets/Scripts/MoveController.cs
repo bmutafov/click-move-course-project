@@ -137,7 +137,6 @@ public class MoveController : MonoBehaviour {
     public void playGrassAnimation() {
         int index = transform.parent.childCount;
         Transform grass = transform.parent.GetChild(index - 1);
-        Debug.Log(grass.name);
         grass.GetComponent<Animator>().SetBool("play", true);
     }
 

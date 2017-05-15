@@ -64,7 +64,7 @@ public class CatchSpawn : MonoBehaviour {
         instObj.name = "Catch";
 
         //set the new position to be centered on the grid
-        instObj.transform.localPosition = new Vector3(0f, 3.5f, 0f);
+        instObj.transform.localPosition = new Vector3(0f, 2.5f, 0f);
 
         //tag and tell other scripts which is the new Catch position
         catchCubeName = spawnGridCube.transform.name;

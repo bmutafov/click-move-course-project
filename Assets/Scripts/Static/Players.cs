@@ -15,8 +15,8 @@ public class Players : MonoBehaviour {
         do {
             int randomPos = Random.Range(0, gridCubes.Length - 1);
             GameObject randomCube = gridCubes[randomPos];
-            if (HighlightController.isFree(randomCube)) {               
-                return randomCube.transform.position + new Vector3(0f, 0.4f, 0f);
+            if (HighlightController.isFree(randomCube)) {
+                return randomCube.transform.position;
             }
             i++;
         } while (i < gridCubes.Length);

@@ -130,7 +130,7 @@ public class Catch : MonoBehaviour {
                 //removing the last 6 simbols (TARGET)
                 player.name = player.name.Substring(0, nameLength - 6);
 
-                player.GetComponent<MoveController>().setNewPosition(Players.randomFreePosition());
+                player.GetComponent<MoveController>().setNewPosition(Players.randomFreePosition() + new Vector3(0f, player.transform.position.y, 0f));
 
                 //destroying the catch
                 destroyAll(false);
