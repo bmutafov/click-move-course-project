@@ -9,7 +9,7 @@ public class CoinRotate : MonoBehaviour {
 	}
 
     public void OnCollisionEnter() {
-        speed = 0;
+        //speed = 0;
         transform.Rotate(new Vector3(90f, 0f, 0f));
         transform.localScale = new Vector3(25f, 25f, 5f);
     }

@@ -83,7 +83,6 @@
     <Compile Include="Assets\Scripts\HighlightController.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\MoveDetect.cs" />
     <Compile Include="Assets\Scripts\MoveController.cs" />
-    <Compile Include="Assets\Scripts\SetBool.cs" />
     <Compile Include="Assets\Scripts\Static\CoinRotate.cs" />
     <Compile Include="Assets\Scripts\Static\GameManager.cs" />
     <Compile Include="Assets\Scripts\Static\Grid.cs" />
@@ -91,6 +90,7 @@
     <Compile Include="Assets\Scripts\Static\Players.cs" />
     <Compile Include="Assets\Scripts\Static\Score.cs" />
     <Compile Include="Assets\Scripts\Static\ScoreUpdater.cs" />
+    <Compile Include="Assets\Scripts\Static\SetBool.cs" />
     <Compile Include="Assets\Scripts\Static\Timer.cs" />
     <Compile Include="Assets\Scripts\Static\UI.cs" />
   </ItemGroup>
