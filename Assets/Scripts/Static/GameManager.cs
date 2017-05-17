@@ -32,11 +32,13 @@ public class GameManager : MonoBehaviour {
     public void pauseGame() {
         pausePanel.gameObject.SetActive(true);
         Time.timeScale = 0;
+        GetComponent<AudioSource>().Pause();
     }
 
     public void resumeGame() {
         pausePanel.gameObject.SetActive(false);
         Time.timeScale = 1;
+        GetComponent<AudioSource>().UnPause();
     }
 
     public void quitGame() {
