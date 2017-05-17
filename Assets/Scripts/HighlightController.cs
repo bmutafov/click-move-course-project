@@ -188,5 +188,15 @@ public class HighlightController : MonoBehaviour {
             border.SetActive(false);
         }
     }
+    /*
+      Change tags Taken to tags CridCube 
+      Taken is used to fix the bug in the randomFreePosition function in Players script
+    */
+    public void setDefaultTags() {
+        GameObject[] gridCubes = GameObject.FindGameObjectsWithTag("Taken");
+        for (int i = 0; i < gridCubes.Length; i++) {
+            gridCubes[i].tag = "GridCube";
+        }
+    }
 
 }

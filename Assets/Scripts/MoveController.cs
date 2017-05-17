@@ -19,17 +19,18 @@ public class MoveController : MonoBehaviour {
     static public GameObject activePlayer;
     
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         if (randomStartingPosition) {
             newPosition = Players.randomFreePosition() + new Vector3(0f, transform.position.y, 0f);
         } else {
             newPosition = transform.position;
         }
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
+        HighlightController.GetComponent<HighlightController>().setDefaultTags();
+        if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
 			RaycastHit hit;
 			//IF click hit a collider

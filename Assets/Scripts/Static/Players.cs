@@ -14,7 +14,8 @@ public class Players : MonoBehaviour {
         do {
             int randomPos = Random.Range(0, gridCubes.Length - 1);
             GameObject randomCube = gridCubes[randomPos];
-            if (HighlightController.isFree(randomCube) && randomCube.transform.position.z != Grid.size.z - 1) {
+            if (HighlightController.isFree(randomCube) && randomCube.transform.tag != "CatchCube" && randomCube.transform.tag != "Taken") {
+                gridCubes[randomPos].tag = "Taken";
                 return randomCube.transform.position;
             }
             i++;
