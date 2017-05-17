@@ -113,6 +113,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToCatch: 10
   timeToBring: 10
+  shorterCatchTimer: 0
+  shorterBringTimer: 0
+  timeTakenEveryCatch: 0.1
   timeToBringPrefab: {fileID: 1292469809864938, guid: 78ab11059873a0447a019626cab7bdc3,
     type: 2}
   timeToCatchPrefab: {fileID: 1089285767022800, guid: ef48cc3fc3cf0584b85d83bba8800399,

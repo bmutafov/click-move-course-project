@@ -7,6 +7,11 @@ public class Catch : MonoBehaviour {
     public float timeToCatch = 5;
     public float timeToBring = 10;
 
+    [Header("Increase difficulty over time")]
+    public bool shorterCatchTimer = false;
+    public bool shorterBringTimer = false;
+    public float timeTakenEveryCatch = 0.1f;
+
     [Header("Prefabs")]
     public GameObject timeToBringPrefab;
     public GameObject timeToCatchPrefab;
@@ -27,6 +32,8 @@ public class Catch : MonoBehaviour {
     // Use this for initialization
     void Start () {
         canvas = GameObject.Find("Canvas");
+        if (shorterCatchTimer) timeToCatch -= (Score.getScore() * timeTakenEveryCatch);
+        if (shorterBringTimer) timeToCatch -= (Score.getScore() * timeTakenEveryCatch);
         startCatchTimer();
     }
 	

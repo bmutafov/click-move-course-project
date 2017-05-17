@@ -20,7 +20,7 @@ public class MoveController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         if (randomStartingPosition) {
-            newPosition = Players.randomFreePosition();
+            newPosition = Players.randomFreePosition() + new Vector3(0f, transform.position.y, 0f);
         } else {
             newPosition = transform.position;
         }
