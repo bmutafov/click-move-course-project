@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Players : MonoBehaviour {
 
@@ -15,7 +14,7 @@ public class Players : MonoBehaviour {
         do {
             int randomPos = Random.Range(0, gridCubes.Length - 1);
             GameObject randomCube = gridCubes[randomPos];
-            if (HighlightController.isFree(randomCube)) {
+            if (HighlightController.isFree(randomCube) && randomCube.transform.position.z != Grid.size.z - 1) {
                 return randomCube.transform.position;
             }
             i++;

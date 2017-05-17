@@ -6,11 +6,16 @@ public class MoveDetect : MonoBehaviour {
 
     public GameObject[] objectsToDeactivate;
 
-    private IEnumerator OnTriggerEnter (Collider other) {
+    private GameManager gm;
+
+    private void Start () {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
+    private void OnTriggerEnter (Collider other) {
         foreach(GameObject obj in objectsToDeactivate) {
             obj.SetActive(false);
         }
-        yield return new WaitForSeconds(0.2f);
-        SceneManager.LoadScene("scene01");
+        StartCoroutine(gm.sceneFade("scene01"));
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
@@ -6,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public Transform gameOverPanel;
     public Transform howToPlayPanel;
     public Transform pausePanel;
+    public Transform fadePanel;
 
     static public Transform staticGameOverPanel;
 
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour {
     private void Start () {
         isGameOver = false;
         staticGameOverPanel = gameOverPanel;
+        fadePanel.gameObject.SetActive(true);
     }
 
     static public void gameOver() {
@@ -23,7 +26,7 @@ public class GameManager : MonoBehaviour {
 
     public void restartGame() {
         resumeGame();
-        SceneManager.LoadScene("scene01");
+        StartCoroutine(sceneFade("scene01"));
     }
 
     public void pauseGame() {
@@ -53,7 +56,13 @@ public class GameManager : MonoBehaviour {
     }
 
     public void loadMainMenu() {
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(sceneFade("MainMenu"));
+    }
+
+    public IEnumerator sceneFade(string newScene) {
+        fadePanel.GetComponent<Animator>().SetBool("fade", true);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(newScene);
     }
 
     void Update() {
