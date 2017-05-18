@@ -15,6 +15,11 @@ public class MoveController : MonoBehaviour {
 	public Material selectedMat;
     public Material targetMat;
 
+    [Header("Audio")]
+    public AudioSource selectSound;
+    public AudioSource deselectSound;
+
+
     private Vector3 newPosition;
     static public GameObject activePlayer;
     
@@ -113,6 +118,7 @@ public class MoveController : MonoBehaviour {
         activePlayer = transform.gameObject;
         Materials.set(activePlayer, selectedMat);
         transform.tag = "PlayerSelected";
+        selectSound.Play();
 	}
 
 	void deselectAll() {
@@ -130,7 +136,8 @@ public class MoveController : MonoBehaviour {
         Material newMat = transform.name.Contains("Target") ? targetMat : normalMat;
         Materials.set(transform.gameObject, newMat);
         transform.tag = "Player";
-	}
+        deselectSound.Play();
+    }
 
     public void setNewPosition (Vector3 newPosition) {
         this.newPosition = newPosition;

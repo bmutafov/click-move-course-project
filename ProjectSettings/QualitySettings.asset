@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 2
+  m_CurrentQuality: 4
   m_QualitySettings:
   - serializedVersion: 2
     name: Fastest
@@ -165,7 +165,7 @@ QualitySettings:
     excludedTargetPlatforms:
     - Android
   m_PerPlatformDefaultQuality:
-    Android: 2
+    Android: 4
     Nintendo 3DS: 5
     PS4: 5
     PSM: 5
