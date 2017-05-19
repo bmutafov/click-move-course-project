@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
     static public void gameOver() {
         isGameOver = true;
         staticGameOverPanel.gameObject.SetActive(true);
+       // GetComponent<AudioSource>().Pause();
     }
 
     public void restartGame() {
@@ -69,6 +70,9 @@ public class GameManager : MonoBehaviour {
 
     void Update() {
         //pausing game when clicking back button
+        if (isGameOver) {
+            GetComponent<AudioSource>().Pause();
+        }
         if (Input.GetKeyDown(KeyCode.Escape)) {
             pauseGame();
         }
