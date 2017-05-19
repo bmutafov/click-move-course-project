@@ -13,10 +13,13 @@ public class GameManager : MonoBehaviour {
     public AudioSource backGroundMusic;
     public AudioSource pauseClick;
     public AudioSource restartClick;
+    public AudioSource gameOverAudio;
 
     static public Transform staticGameOverPanel;
 
     static public bool isGameOver = false;
+
+    private bool playGameOverSound = true;
 
     private void Start () {
         isGameOver = false;
@@ -76,8 +79,10 @@ public class GameManager : MonoBehaviour {
 
     void Update() {
         //pausing game when clicking back button
-        if (isGameOver) {
+        if (isGameOver && playGameOverSound) {
             backGroundMusic.Pause();
+            gameOverAudio.PlayDelayed(0.1f);
+            playGameOverSound = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape)) {
             pauseGame();
