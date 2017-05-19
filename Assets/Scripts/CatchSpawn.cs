@@ -8,6 +8,8 @@ public class CatchSpawn : MonoBehaviour {
     public Material cubeTargetMat;
     public Material grassTopSelected;
 
+    public AudioSource bringCoinSound;
+
     static public string catchCubeName;
     static public GameObject lastPlayer;
 
@@ -21,6 +23,7 @@ public class CatchSpawn : MonoBehaviour {
     void Update() {
         if (!checkAliveCatch() && !GameManager.isGameOver) {
             spawn();
+            bringCoinSound.Play();
         }
     }
 

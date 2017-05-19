@@ -24,6 +24,9 @@ public class Catch : MonoBehaviour {
     public Timer timeToCatchTimer;
     public Timer timeToBringTimer;
 
+    [Header("Audio")]
+    public AudioSource takeCoinSound;
+
     private bool collided = false;
     private GameObject toCatchUI;
     private GameObject toBringUI;
@@ -70,7 +73,8 @@ public class Catch : MonoBehaviour {
             disableCollisionsAndAnimations(collision);
 
             startBringTimer();
-
+            takeCoinSound.Play();
+          
             /* get a reference to the last cube with the catch
              * make it a normal catch cube if the catch is cought
              * */
@@ -127,7 +131,6 @@ public class Catch : MonoBehaviour {
         if (Physics.Raycast(HighlightController.catchDestination, Vector3.up, out hit)) {
             //if that is player and has a child in it 
             if (hit.transform.name.Contains("Target") && hit.transform.childCount > 0) {
-
                 //getting the real cube reference
                 Transform player = transform.parent.GetChild(0);
 
