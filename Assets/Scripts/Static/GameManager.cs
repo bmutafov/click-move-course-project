@@ -1,13 +1,20 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager :MonoBehaviour {
 
+    [Header("Panels")]
     public Transform gameOverPanel;
     public Transform howToPlayPanel;
     public Transform pausePanel;
     public Transform fadePanel;
+    public Transform optionsPanel;
+
+    [Header("Buttons")]
+    public Button musicEnabledButton;
+    public Button musicDisabledButton;
 
     [Header("Audio")]
     public AudioSource backGroundMusic;
@@ -15,11 +22,16 @@ public class GameManager : MonoBehaviour {
     public AudioSource restartClick;
     public AudioSource gameOverAudio;
 
+    [Space]
+    public float musicVolume = 0.315f;
+    public Slider volumeSlider;
+
     static public Transform staticGameOverPanel;
 
     static public bool isGameOver = false;
 
     private bool playGameOverSound = true;
+    private bool isMusicOn = true;
 
     private void Start () {
         isGameOver = false;
@@ -47,6 +59,7 @@ public class GameManager : MonoBehaviour {
 
     public void resumeGame() {
         pausePanel.gameObject.SetActive(false);
+        optionsPanel.gameObject.SetActive(false);
         Time.timeScale = 1;
         backGroundMusic.UnPause();
     }
@@ -68,9 +81,37 @@ public class GameManager : MonoBehaviour {
     }
 
     public void loadMainMenu() {
+        Time.timeScale = 1;
         StartCoroutine(sceneFade("MainMenu"));
     }
 
+    public void loadOptions() {
+        pausePanel.gameObject.SetActive(false);
+        optionsPanel.gameObject.SetActive(true);
+    }
+
+    public void loadPause() {
+        optionsPanel.gameObject.SetActive(false);
+        pausePanel.gameObject.SetActive(true);
+    }
+
+    public void toggleMusic() {
+        isMusicOn = !isMusicOn;
+        if (isMusicOn) {
+            backGroundMusic.volume = musicVolume;
+            musicDisabledButton.gameObject.SetActive(false);
+            musicEnabledButton.gameObject.SetActive(true);
+        } else {
+            backGroundMusic.volume = 0;
+            musicDisabledButton.gameObject.SetActive(true);
+            musicEnabledButton.gameObject.SetActive(false);
+        }
+    }
+
+    public void setGlobalVolume() {
+        AudioListener.volume = volumeSlider.value;
+    }
+    
     public IEnumerator sceneFade(string newScene) {
         fadePanel.GetComponent<Animator>().SetBool("fade", true);
         yield return new WaitForSeconds(1);
