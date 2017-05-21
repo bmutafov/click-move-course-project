@@ -59,6 +59,8 @@ public class Catch : MonoBehaviour {
 		/* If its first collision
 		 * */
 		if (!collided && collision.transform.tag == "Player") {
+
+            takeCoinSound.Play();
             //deactivates the Dashed border on the catch position
             HighlightController.deactivateAllDashedBorders();
 
@@ -73,7 +75,6 @@ public class Catch : MonoBehaviour {
             disableCollisionsAndAnimations(collision);
 
             startBringTimer();
-            takeCoinSound.Play();
           
             /* get a reference to the last cube with the catch
              * make it a normal catch cube if the catch is cought
