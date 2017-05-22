@@ -45,7 +45,6 @@ public class GameManager :MonoBehaviour {
     }
 
     public void restartGame() {
-        restartClick.Play();
         resumeGame();
         StartCoroutine(sceneFade("scene01"));
     }
@@ -54,7 +53,6 @@ public class GameManager :MonoBehaviour {
         pausePanel.gameObject.SetActive(true);
         Time.timeScale = 0;
         backGroundMusic.Pause();
-        pauseClick.Play();
     }
 
     public void resumeGame() {
@@ -97,6 +95,19 @@ public class GameManager :MonoBehaviour {
     public void loadPause() {
         optionsPanel.gameObject.SetActive(false);
         pausePanel.gameObject.SetActive(true);
+    }
+
+    public void playButtonClickSound(int sound) {
+        switch(sound) {
+            case 0:
+                pauseClick.Play();
+                break;
+            case 1:
+                restartClick.Play();
+                break;
+            default:
+                throw new System.Exception("Not currect sound supplied!");
+        }
     }
 
     public void toggleMusic() {
