@@ -85,6 +85,10 @@ public class GameManager :MonoBehaviour {
         StartCoroutine(sceneFade("MainMenu"));
     }
 
+    public void loadTutorial() {
+        StartCoroutine(sceneFade("Tutorial"));
+    }
+
     public void loadOptions() {
         pausePanel.gameObject.SetActive(false);
         optionsPanel.gameObject.SetActive(true);

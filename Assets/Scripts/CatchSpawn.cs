@@ -1,4 +1,4 @@
-﻿ using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CatchSpawn : MonoBehaviour {
@@ -10,13 +10,18 @@ public class CatchSpawn : MonoBehaviour {
 
     public AudioSource bringCoinSound;
 
+    [Header("Tutorial")]
+    public bool isTutorial = false;
+    public float newTimeToCatch = 50f;
+    public int spawnPosition = 0;
+
     static public string catchCubeName;
     static public GameObject lastPlayer;
 
     // Use this for initialization
     void Start() {
         //reference to the Timer script
-        spawn();
+        if(!isTutorial) spawn();
     }
 
     // Update is called once per frame
@@ -29,9 +34,14 @@ public class CatchSpawn : MonoBehaviour {
 
     /*  Spawns a new catch on a random position
      */
-   void spawn() {
+   public void spawn() {
         //randomizing x position for catch object
-        int randomX = Mathf.RoundToInt(Random.Range(Grid.start.x, (Grid.size.x - 1)));
+        int randomX;
+
+        if (isTutorial)
+            randomX = spawnPosition;
+        else
+            randomX = Mathf.RoundToInt(Random.Range(Grid.start.x, (Grid.size.x - 1)));
 
         //selecting a new player who has to catch
         //cant be the previous one
@@ -65,6 +75,10 @@ public class CatchSpawn : MonoBehaviour {
         //instantiate the catch on a position
         GameObject instObj = Instantiate(catchObject, spawnGridCube.transform);
         instObj.name = "Catch";
+        if(isTutorial) {
+            instObj.GetComponent<Catch>().timeToCatch = newTimeToCatch;
+            instObj.GetComponent<Catch>().timeToBring = newTimeToCatch;
+        }
 
         //set the new position to be centered on the grid
         instObj.transform.localPosition = new Vector3(0f, 2.5f, 0f);

@@ -30,6 +30,7 @@ public class Timer : MonoBehaviour {
     public void restartTimer(float time) {
         timeleft = time;
         isPaused = false;
+        isStarted = true;
     }
 
     public  float TimeRemaining() {

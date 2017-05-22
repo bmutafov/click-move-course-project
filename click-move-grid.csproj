@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\Static\SetBool.cs" />
     <Compile Include="Assets\Scripts\Static\Timer.cs" />
     <Compile Include="Assets\Scripts\Static\UI.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\Tutorial.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
